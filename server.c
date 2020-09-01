@@ -8,6 +8,34 @@
 
 #define port 8080
 
+char *encrypt(char *a) {
+        char *temp = (char*)malloc(sizeof(char)*sizeof(a));
+        strcpy(temp, a);
+        int len=0;
+
+        for(int i=0;a[i] != '\0';i++)
+                len++;
+
+	for(int i=0;i<len;i++)
+		temp[i] = temp[i] + 2;
+
+        return temp;
+
+}
+
+char *decrypt(char *a) {
+        char *temp = (char*)malloc(sizeof(char)*sizeof(a));
+        strcpy(temp, a);
+        int len=0;
+
+        for(int i=0;a[i] != '\0';i++)
+                len++;
+
+	for(int i=0;i<len;i++)
+		temp[i] = temp[i] - 2;
+        return temp;
+
+}
 int main(int argc, char *argv[], char *envp[]) {
 
 	int serverFd, newSocket, readVal;
@@ -53,11 +81,11 @@ int main(int argc, char *argv[], char *envp[]) {
 
 		readVal = read(newSocket, buff, 1024);
 
-		printf("\n\e[93mO: %s\n\n", buff);
+		printf("\n\e[93mO: %s\n\n", decrypt(buff));
 		printf("\n\e[90mSen: ");
 		gets(msg, 500);
 
-		send(newSocket, msg, strlen(msg), 0);
+		send(newSocket, encrypt(msg), strlen(msg), 0);
 	}
 
 	return 0;
