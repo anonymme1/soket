@@ -11,22 +11,31 @@
 
 int main() {
 
-/*     < Server >
+/*      < SERVER >
+
 	Server serv(8080);
-	char msg[] = "Hi, i am server";
+	std::string msg;
+
+	std::cout<<"msg: ";
+	getline(std::cin, msg);
+
 	char buff[1024] = {0};
 
-	serv.menu(buff, msg);
+	serv.menu(buff, (char*)&msg);
 */
 
-/*     < Client >
+/*      < CLIENT >
+
 	Server cli(8080);
-	char msg[] = "Hi, i am client";
+	std::string msg;
+
+	std::cout<<"Msg: ";
+	getline(std::cin, msg);
+
 	char buff[1024] = {0};
 
-	cli.menu(buff, msg);
+	cli.menu(buff, (char*)&msg);
 */
-
 	return 0;
 }
 
